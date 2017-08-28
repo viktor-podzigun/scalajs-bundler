@@ -124,6 +124,10 @@ object ReloadWorkflow {
       )
     IO.write(entryPoint, depsFileContent.show)
 
+    if(!bundleFile.exists) {
+      IO.touch(bundleFile)
+    }
+
     customWebpackConfigFile match {
       case Some(configFile) =>
         val customConfigFileCopy = Webpack.copyCustomWebpackConfigFiles(workingDir, webpackResources)(configFile)
