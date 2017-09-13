@@ -7,6 +7,7 @@
 When upgrading to this release, make sure to migrate your webpack configuration to webpack 3.X https://webpack.js.org/guides/migrating/
 
 - [#175](https://github.com/scalacenter/scalajs-bundler/pull/175): Set webpack 3.X as default version.
+- [#176?](https://github.com/scalacenter/scalajs-bundler/pull/176?): Run webpack-dev-server from the scalajs-bundler folder
 
 ## Version 0.8.0
 
