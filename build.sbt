@@ -126,7 +126,8 @@ lazy val commonSettings =
       )
     ),
     scriptedLaunchOpts += "-Dplugin.version=" + version.value,
-    scriptedBufferLog := false
+    scriptedBufferLog := false,
+    apiMappingRules := sbtRule.orElse(apiMappingRules.value)
   )
 
 lazy val noPublishSettings =
@@ -135,3 +136,8 @@ lazy val noPublishSettings =
     publish := (),
     publishLocal := ()
   )
+
+def sbtRule: PartialFunction[ModuleID, URL] = {
+    case ModuleID("sbt", _, revision, _, _, _, _, _, _, _, _) =>
+      url(s"http://www.scala-sbt.org/$revision/api/index.html#package")
+  }

@@ -690,10 +690,6 @@ object ScalaJSBundlerPlugin extends AutoPlugin {
 
       // webpack-dev-server wiring
       startWebpackDevServer in stageTask := Def.task {
-        // We need to execute the full webpack task once, since it generates
-        // the required config file
-        (webpack in stageTask).value
-
         val port = (webpackDevServerPort in stageTask).value
         val extraArgs = (webpackDevServerExtraArgs in stageTask).value
 
@@ -720,7 +716,12 @@ object ScalaJSBundlerPlugin extends AutoPlugin {
           extraArgs,
           logger
         )
-      }.dependsOn(npmUpdate).value,
+      }.dependsOn(
+        npmUpdate,
+        // We need to execute the full webpack task once, since it generates
+        // the required config file
+        (webpack in stageTask)
+      ).value,
 
       // Stops the global server instance, but is defined on stage
       // level to match `startWebpackDevServer`
