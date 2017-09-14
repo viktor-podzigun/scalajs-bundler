@@ -654,7 +654,7 @@ object ScalaJSBundlerPlugin extends AutoPlugin {
       ),
 
       webpack in stageTask := Def.taskDyn {
-        webpackBundlingMode.value match {
+        (webpackBundlingMode in stageTask).value match {
           case scalajsbundler.BundlingMode.Application =>
             WebpackTasks.webpack(stageTask)
           case mode: scalajsbundler.BundlingMode.LibraryOnly =>
