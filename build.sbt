@@ -101,7 +101,8 @@ inScope(ThisScope.copy(project = Global))(List(
       "scm:git@github.com:scalacenter/scalajs-bundler.git"
     )
   ),
-  organization := "ch.epfl.scala",
+  organization := "org.scommons.patched",
+  version := "0.14.0-SNAPSHOT",
   homepage := Some(url(s"https://github.com/scalacenter/scalajs-bundler")),
   licenses := Seq("MIT License" -> url("http://opensource.org/licenses/mit-license.php")),
   developers := List(Developer("julienrf", "Julien Richard-Foy", "julien.richard-foy@epfl.ch", url("http://julien.richard-foy.fr")))
